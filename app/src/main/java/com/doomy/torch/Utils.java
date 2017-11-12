@@ -77,66 +77,66 @@ public class Utils {
      */
     public static int getPrefColor(Context context, String preference) {
 
-        int mColor = context.getResources().getColor(R.color.red);
+        int mColor = context.getResources().getColor(R.color.teal);
 		
-        if (preference.equals(context.getString(R.string.red))) {
-            mColor = context.getResources().getColor(R.color.red);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.pink))) {
-            mColor = context.getResources().getColor(R.color.pink);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.purple))) {
-            mColor = context.getResources().getColor(R.color.purple);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.deepPurple))) {
-            mColor = context.getResources().getColor(R.color.deepPurple);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.indigo))) {
-            mColor = context.getResources().getColor(R.color.indigo);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.blue))) {
-            mColor = context.getResources().getColor(R.color.blue);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.lightBlue))) {
-            mColor = context.getResources().getColor(R.color.lightBlue);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.cyan))) {
-            mColor = context.getResources().getColor(R.color.cyan);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.teal))) {
-            mColor = context.getResources().getColor(R.color.teal);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.green))) {
-            mColor = context.getResources().getColor(R.color.green);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.lightGreen))) {
-            mColor = context.getResources().getColor(R.color.lightGreen);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.lime))) {
-            mColor = context.getResources().getColor(R.color.lime);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.yellow))) {
-            mColor = context.getResources().getColor(R.color.yellow);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.amber))) {
-            mColor = context.getResources().getColor(R.color.amber);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.orange))) {
-            mColor = context.getResources().getColor(R.color.orange);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.deepOrange))) {
-            mColor = context.getResources().getColor(R.color.deepOrange);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.brown))) {
-            mColor = context.getResources().getColor(R.color.brown);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.grey))) {
-            mColor = context.getResources().getColor(R.color.grey);
-            return mColor;
-        } else if (preference.equals(context.getString(R.string.blueGrey))) {
-            mColor = context.getResources().getColor(R.color.blueGrey);
-            return mColor;
-        }
+//        if (preference.equals(context.getString(R.string.red))) {
+//            mColor = context.getResources().getColor(R.color.red);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.pink))) {
+//            mColor = context.getResources().getColor(R.color.pink);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.purple))) {
+//            mColor = context.getResources().getColor(R.color.purple);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.deepPurple))) {
+//            mColor = context.getResources().getColor(R.color.deepPurple);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.indigo))) {
+//            mColor = context.getResources().getColor(R.color.indigo);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.blue))) {
+//            mColor = context.getResources().getColor(R.color.blue);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.lightBlue))) {
+//            mColor = context.getResources().getColor(R.color.lightBlue);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.cyan))) {
+//            mColor = context.getResources().getColor(R.color.cyan);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.teal))) {
+//            mColor = context.getResources().getColor(R.color.teal);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.green))) {
+//            mColor = context.getResources().getColor(R.color.green);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.lightGreen))) {
+//            mColor = context.getResources().getColor(R.color.lightGreen);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.lime))) {
+//            mColor = context.getResources().getColor(R.color.lime);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.yellow))) {
+//            mColor = context.getResources().getColor(R.color.yellow);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.amber))) {
+//            mColor = context.getResources().getColor(R.color.amber);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.orange))) {
+//            mColor = context.getResources().getColor(R.color.orange);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.deepOrange))) {
+//            mColor = context.getResources().getColor(R.color.deepOrange);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.brown))) {
+//            mColor = context.getResources().getColor(R.color.brown);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.grey))) {
+//            mColor = context.getResources().getColor(R.color.grey);
+//            return mColor;
+//        } else if (preference.equals(context.getString(R.string.blueGrey))) {
+//            mColor = context.getResources().getColor(R.color.blueGrey);
+//            return mColor;
+//        }
         return mColor;
     }
 	

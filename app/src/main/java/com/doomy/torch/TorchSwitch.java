@@ -46,8 +46,8 @@ public class TorchSwitch extends BroadcastReceiver {
         Boolean mPrefDevice = mPreferences.getBoolean("mPrefDevice", false);
 
         if (!mPrefDevice) {
-            TorchWidgetProvider mProvider = new TorchWidgetProvider();
-            mProvider.disableWidget(context);
+//            TorchWidgetProvider mProvider = new TorchWidgetProvider();
+//            mProvider.disableWidget(context);
         }
 
         if (intent.getAction().equals(TOGGLE_FLASHLIGHT)) {

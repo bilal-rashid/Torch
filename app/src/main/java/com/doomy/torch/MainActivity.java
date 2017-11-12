@@ -30,6 +30,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -38,14 +39,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends Activity {
 
     // Declaring your view and variables
     private static final String TAG = "MainActivity";
-    private static final int ANIMATION_DURATION = 1000;
-    private static final int DEMI_DURATION = 500;
+    private static final int ANIMATION_DURATION = 200;
+    private static final int DEMI_DURATION = 100;
 	private static MainActivity mActivity;
 	private TorchWidgetProvider mWidgetProvider;
     private boolean mTorchOn;
@@ -61,6 +68,22 @@ public class MainActivity extends Activity {
     /**
      * Called when the activity is first created.
      */
+    private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
+    private final int REFRESH_TIME_SECONDS = 4 * 1000;
+    private android.os.Handler mHandler;
+    private Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mHandler.removeCallbacks(mRunnable);
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                mHandler.postDelayed(mRunnable, REFRESH_TIME_SECONDS);
+            }
+
+        }
+    };
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,11 +97,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Open "Hello" dialog at the first launch
-        openFirstDialog();
+//        openFirstDialog();
 
         mTorchOn = false;
 
-        mWidgetProvider = TorchWidgetProvider.getInstance();
+//        mWidgetProvider = TorchWidgetProvider.getInstance();
 
         mImageViewShape = (ImageView) findViewById(R.id.imageViewShape);
         mImageViewOff = (ImageView) findViewById(R.id.imageViewOff);
@@ -105,6 +128,16 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        mHandler = new Handler();
+        mHandler.postDelayed(mRunnable, REFRESH_TIME_SECONDS);
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mAdView.loadAd(adRequest);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
     private void onCreateIntent() {
@@ -117,7 +150,7 @@ public class MainActivity extends Activity {
 
 	@Override
     public void onPause() {
-        updateWidget();
+//        updateWidget();
 		super.onPause();
         getApplicationContext().unregisterReceiver(mStateReceiver);
     }
@@ -125,7 +158,7 @@ public class MainActivity extends Activity {
 	@Override
     public void onResume() {
 		Log.d(TAG, "onResume");
-        updateWidget();
+//        updateWidget();
 		super.onResume();
         getApplicationContext().registerReceiver(mStateReceiver, new IntentFilter(TorchSwitch.TORCH_STATE_CHANGED));
         setThemeColor();
@@ -152,6 +185,7 @@ public class MainActivity extends Activity {
         Boolean mPrefScreen = mPreferences.getBoolean(SettingsActivity.KEY_SCREEN, false);
         Boolean mPrefDevice = mPreferences.getBoolean("mPrefDevice", false);
         Boolean mPrefBright = mPreferences.getBoolean("mPrefBright", false);
+        mPrefBright=true;
 
         Window mWindow = getWindow();
         WindowManager.LayoutParams mSettings = mWindow.getAttributes();
